@@ -1,0 +1,258 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.zust</groupId>
+  <artifactId>movie</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+    <name>movie Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+		<!-- 主要依赖库的版本定义 -->
+		<spring.version>4.1.3.RELEASE</spring.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
+		<hibernate-validator.version>4.3.2.Final</hibernate-validator.version>
+		<hibernate-search.version>4.2.0.Final</hibernate-search.version>
+		<fastjson.version>1.2.8</fastjson.version>
+		<junit.version>4.12</junit.version>		
+		<annotation-version>1.2</annotation-version>
+		<jetty.version>8.1.16.v20140903</jetty.version>
+
+		<!-- jdbc driver -->
+		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
+		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
+		<jdbc.driver.version>5.1.30</jdbc.driver.version>
+		<!-- mahout -->
+		<mahout.version>0.6</mahout.version>
+
+		<!-- other -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.8</jdk.version>
+</properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+		<!-- spring begin -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- spring end -->
+
+		<!-- AOP begin -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.1</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- AOP end -->
+
+
+		<!-- jdbc driver -->
+		<dependency>
+			<groupId>${jdbc.driver.groupId}</groupId>
+			<artifactId>${jdbc.driver.artifactId}</artifactId>
+			<version>${jdbc.driver.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- 加入hibernate依赖包 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>		
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+
+		<!-- JSON begin -->
+		<dependency>  
+            <groupId>com.alibaba</groupId>  
+            <artifactId>fastjson</artifactId>  
+            <version>${fastjson.version}</version>  
+        </dependency>  
+		<!-- JSON end -->
+		
+		<!-- 加入druid数据源依赖包 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>0.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+
+
+		<!-- servlet 3.x -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<!-- annotation -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>${annotation-version}</version>
+			<scope>provided</scope>
+		</dependency>	
+		
+		<!-- 加入slf4j依赖包 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+		</dependency>	
+		
+        <!-- http client -->  
+        <dependency>  
+            <groupId>org.apache.httpcomponents</groupId>  
+            <artifactId>httpclient</artifactId>  
+            <version>4.5</version>  
+        </dependency>  
+  
+        <dependency>  
+            <groupId>org.apache.httpcomponents</groupId>  
+            <artifactId>httpmime</artifactId>  
+            <version>4.5</version>  
+        </dependency>
+        
+        <!-- mahout -->
+		<dependency>
+		<groupId>org.apache.mahout</groupId>
+		<artifactId>mahout-core</artifactId>
+		<version>${mahout.version}</version>
+		</dependency>
+		<dependency>
+		<groupId>org.apache.mahout</groupId>
+		<artifactId>mahout-integration</artifactId>
+		<version>${mahout.version}</version>
+		</dependency>          				
+
+  </dependencies>
+  <build>
+    <finalName>movie</finalName>
+    <plugins>
+			<!-- compiler插件, 设定JDK版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+
+			<!-- jetty插件, 设定context path与spring profile -->
+			<plugin>
+			<groupId>org.mortbay.jetty</groupId>
+               <artifactId>maven-jetty-plugin</artifactId>
+               <version>6.1.10</version>
+               <configuration>
+				   <scanIntervalSeconds>10</scanIntervalSeconds>  
+           		   <jettyEnvXml>src/main/resources/jetty-env.xml</jettyEnvXml>               
+                   <systemProperties>
+                       <systemProperty>
+                           <name>org.mortbay.jetty.Request.maxFormContentSize</name>
+                           <value>100000000</value>
+                       </systemProperty>
+                   </systemProperties>
+                   <encoding>UTF-8</encoding>
+                   <scanIntervalSeconds>10</scanIntervalSeconds>
+                   <stopKey>foo</stopKey>
+                   <stopPort>9999</stopPort>
+                   <webAppConfig>  
+                       <contextPath>/</contextPath>  
+                   </webAppConfig> 
+               </configuration>
+               <executions>
+                   <execution>
+                       <id>start-jetty</id>
+                       <phase>pre-integration-test</phase>
+                       <goals>
+                           <goal>run</goal>
+                       </goals>
+                       <configuration>
+                           <scanIntervalSeconds>0</scanIntervalSeconds>
+                           <daemon>true</daemon>
+                       </configuration>
+                   </execution>
+                   <execution>
+                       <id>stop-jetty</id>
+                       <phase>post-integration-test</phase>
+                       <goals>
+                           <goal>stop</goal>
+                       </goals>
+                   </execution>
+				</executions>
+			</plugin>
+			
+		</plugins>    
+  </build>  
+</project>

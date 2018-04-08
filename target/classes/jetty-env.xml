@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN"  
+"http://jetty.mortbay.org/configure.dtd">  
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">  
+    <New id="dataSource" class="org.mortbay.jetty.plus.naming.Resource">  
+        <Arg>jdbc/movie</Arg>  
+        <Arg>  
+            <New class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">  
+                <Set name="url">jdbc:mysql://115.159.184.231:3306/movie?useUnicode=true&amp;characterEncoding=UTF-8</Set>  
+                <Set name="user">test</Set>  
+                <Set name="password">test123456</Set>  
+            </New>  
+        </Arg>  
+    </New>  
+</Configure> 
