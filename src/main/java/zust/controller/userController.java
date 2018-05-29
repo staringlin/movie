@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import zust.dto.Json;
+import zust.dto.MovieDto;
 import zust.dto.UserDto;
+import zust.entity.MovieComment;
+import zust.entity.movie;
+import zust.service.CommentServiceI;
+import zust.service.MovieServiceI;
 import zust.service.PosterServiceI;
 import zust.service.RecommendServiceI;
 import zust.service.UserServiceI;
@@ -31,9 +37,13 @@ public class userController {
 	@Autowired
 	PosterServiceI posterService;
 	@Autowired
-	RecommendServiceI recommendService;
+	CommentServiceI commentService;
 	@Autowired
 	UserServiceI userService;
+	@Autowired
+	RecommendServiceI recommendService;
+	@Autowired
+	MovieServiceI movieService;
 	@Autowired
 	HttpSession session;
 	
@@ -47,12 +57,6 @@ public class userController {
 		return mv;
 	}
 	
-	@RequestMapping("/recommend")
-	@ResponseBody
-	public String recommend(long userId,int size){
-		recommendService.userBasedRecommend(userId, size);
-		return "successful";
-	}
 	
 	@ResponseBody
 	@RequestMapping(value={"/doRegister"},method=RequestMethod.POST,headers="Accept=*/*",produces = "application/json")	
@@ -68,12 +72,12 @@ public class userController {
 		UserDto u = userService.login(username, MD5Util.md5(password));
 		ModelAndView mv = new ModelAndView();
 		if(u != null){
-		mv.setViewName("index");
+		mv.setViewName("redirect:/userController/index");
 		session.setAttribute("id", u.getId());
 		session.setAttribute("username", username);
 		return mv;
 		}else{
-			mv.setViewName("index");
+			mv.setViewName("redirect:/login.html");
 			return mv;
 		}
 		
@@ -81,8 +85,12 @@ public class userController {
 	}
 	
 	@RequestMapping("/index")
-	public String index(){
-		return "index";
+	public ModelAndView index(){
+		List<MovieDto> data = movieService.getFeaturedMoview();
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index");
+		mv.addObject("featuredMovies", data);
+		return mv;
 	}
 	
 	@RequestMapping("/logout")
@@ -93,4 +101,25 @@ public class userController {
 		return "redirect:/login.html";
 	}
 
+	@RequestMapping("/getMovie")
+	public ModelAndView getMovie(MovieDto movie){
+		String rating = movieService.getRating(movie.getId());
+		List<MovieComment> comments = commentService.getComment(movie);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("single");
+		mv.addObject("movie", movie);
+		mv.addObject("rating", rating);	
+		mv.addObject("comments",comments);
+		return mv;
+	}	
+	
+	@RequestMapping("/test")
+	@ResponseBody
+	public String test(){
+		movieService.getFeaturedMoview();
+		return "successful";
+	}
+	
+
+	
 }

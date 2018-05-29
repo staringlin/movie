@@ -108,6 +108,9 @@
         <url-pattern>/css/*</url-pattern>
         <url-pattern>/js/*</url-pattern>
         <url-pattern>/images/*</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/slide/*</url-pattern>
+        <url-pattern>/poster/*</url-pattern>
     </servlet-mapping>   
     
 </web-app>

@@ -1,9 +1,15 @@
 package zust.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,10 +19,28 @@ public class User {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	public String username;
-	public String password;
-	public String email;
+	private String username;
+	private String password;
+	private String email;
+	private String avatar;
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)//说明由多的一方user属性关联自己
+	Set<MovieComment> comments = new HashSet<MovieComment>(0);
 	
+
+	
+	
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+	public Set<MovieComment> getComments() {
+		return comments;
+	}
+	public void setComments(Set<MovieComment> comments) {
+		this.comments = comments;
+	}
 	public int getId() {
 		return id;
 	}

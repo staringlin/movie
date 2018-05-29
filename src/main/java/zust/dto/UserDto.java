@@ -5,8 +5,16 @@ public class UserDto {
 	public String username;
 	public String password;
 	public String email;
+	public String avatar;
 	
 	
+	
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 	public int getId() {
 		return id;
 	}

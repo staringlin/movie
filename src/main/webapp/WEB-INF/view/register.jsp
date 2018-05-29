@@ -19,7 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
 	<div class="container_wrap">
 		<div class="header_top">
-		    <div class="col-sm-3 logo"><a href="index.html"><img src="images/logo.png" alt=""/></a></div>
+		    <div class="col-sm-3 logo"><a href="/userController/index"><img src="images/logo.png" alt=""/></a></div>
 		    <div class="col-sm-6 nav">
 			  <ul>
 				 <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="comic"><a href="movie.html"> </a></span></li>
@@ -41,29 +41,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       	     <div class="register">
 		  	  <form> 
 				 <div class="register-top-grid">
-					<h3>Personal Information</h3>
+					<h3>个人 信息</h3>
 					 <div>
-						<span>User Name<label>*</label></span>
+						<span>用户 名<label>*</label></span>
 						<input type="text" id="username"> 
 					 </div>
 
 					 <div>
-						 <span>Email Address<label>*</label></span>
+						 <span>邮件地址<label>*</label></span>
 						 <input type="text" id="email"> 
 					 </div>
 					 <div class="clearfix"> </div>
 					   <a class="news-letter" href="#">
-						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
+						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>同意注册为新用户</label>
 					   </a>
 					 </div>
 				     <div class="register-bottom-grid">
-						    <h3>Login Information</h3>
+						    <h3>登录 信息</h3>
 							 <div>
-								<span>Password<label>*</label></span>
+								<span>密码<label>*</label></span>
 								<input type="password" id="password">
 							 </div>
 							 <div>
-								<span>Confirm Password<label>*</label></span>
+								<span>确认密码 <label>*</label></span>
 								<input type="password" id="confirmPassword">
 							 </div>
 							 <div class="clearfix"> </div>
@@ -72,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 				<div class="register-but" id="submit">
 				   <form>
-					   <input type="button" value="submit">
+					   <input type="button" value="注　册">
 					   <div class="clearfix"> </div>
 				   </form>
 				</div>

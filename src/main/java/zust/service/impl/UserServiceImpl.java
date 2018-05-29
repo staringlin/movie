@@ -1,6 +1,8 @@
 package zust.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
@@ -9,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import zust.dao.UserDaoI;
 import zust.dto.Json;
+import zust.dto.MovieDto;
 import zust.dto.UserDto;
 import zust.entity.User;
+import zust.entity.movie;
 import zust.service.UserServiceI;
 import zust.util.MD5Util;
 @Service
@@ -60,7 +64,70 @@ public class UserServiceImpl<DtoUser> implements UserServiceI{
 	
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id",id);
+		User t = userDao.get("from User t where t.id = :id ", params);
+		userDao.delete(t);
+	}
+	@Override
+	public List<UserDto> getUsers(String currentPage) {
+		String hql = "from User u ";
+		List<User> data = userDao.find(hql,Integer.parseInt(currentPage), 4);
+		List<UserDto> users = new ArrayList<UserDto>();
+		for(User one : data){
+			UserDto temp = new UserDto();
+			temp.setEmail(one.getEmail());
+			temp.setId(one.getId());
+			temp.setUsername(one.getUsername());
+			temp.setAvatar(one.getAvatar());
+			users.add(temp);			
+		}
+		return users;
+	}
+	@Override
+	public int getCount() {
+		Long count = userDao.count("select count(*) from User");
+		int pageCount = count.intValue()%4 == 0 ? count.intValue()/4:count.intValue()/4+1;
+		return pageCount;
+	}
+	@Override
+	public Json modifyUser(UserDto u) {
+		Json j = new Json();
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", u.getId());
+		User t = userDao.get("from User t where t.id = :id ", params);
+		if(t != null){
+			System.out.println(u.getId());
+			System.out.println(u.getEmail());
+			System.out.println(u.getUsername());
+		t.setEmail(u.getEmail());
+		t.setUsername(u.getUsername());
+		j.setSuccess(true);
+		userDao.update(t);
+		}else{
+			j.setSuccess(false);
+			j.setMsg("修改失败");
+		}
+
+		return j;
+	}
+	@Override
+	public List<UserDto> search(String username) {
+		String hql = "from User u where u.username like :username or u.email like :username";
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("username", "%"+username+"%");
+		List<User> data = userDao.find(hql, params);
+		List<UserDto> users = new ArrayList<UserDto>();
+		for(User one : data){
+			UserDto temp = new UserDto();
+			temp.setEmail(one.getEmail());
+			temp.setId(one.getId());
+			temp.setUsername(one.getUsername());
+			temp.setAvatar(one.getAvatar());
+			users.add(temp);
+			
+		}
+		return users;
 	}
 
 }

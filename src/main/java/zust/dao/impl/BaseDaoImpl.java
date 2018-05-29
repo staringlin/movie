@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import zust.dao.BaseDaoI;
+import zust.entity.movie;
 
 @Repository
 public class BaseDaoImpl<T> implements BaseDaoI<T> {
@@ -221,4 +222,6 @@ public class BaseDaoImpl<T> implements BaseDaoI<T> {
 		}
 		return (BigInteger) q.uniqueResult();
 	}
+	
+	
 }

@@ -1,9 +1,15 @@
 package zust.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +22,15 @@ public class movie {
 	private String published_year;
 	private String type;
 	private String poster;
+	@OneToMany(mappedBy="movie",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	Set<MoviePreference> preferences = new HashSet<MoviePreference>(0);
 	
+	public Set<MoviePreference> getPreferences() {
+		return preferences;
+	}
+	public void setPreferences(Set<MoviePreference> preferences) {
+		this.preferences = preferences;
+	}
 	public String getPoster() {
 		return poster;
 	}

@@ -647,6 +647,68 @@ text-align: center;
 	
 
 }
+.box_2 p{
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow: hidden;
+	padding: 0 20px;
+}
+.box_2 .col-md-3{
+	/*overflow: hidden;*/
+	height: 270px;
+	width: 21%;
+	margin: 2%;
+	position: relative;
+}
+.box_2 .col-md-3 img{
+	width: 188px;
+	height: 240px;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 20;
+    transform: translateY(-50%);
+}
+.box_2 .col-md-3 .icon1{
+	vertical-align: top;
+	margin: 0 10px;
+}
+.box_2 .col-md-3 .icon3{
+	color: white;
+	margin: 0 10px;
+}
+.box_2 .col-md-3 .top{
+	color: white;
+	z-index: 10000;
+	line-height: 28px;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.box_2 .col-md-3 .bottom{
+	color: black;
+	text-align: center;
+	width: 100%;
+	z-index: 10000;
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+
+.box_2 .col-md-3 a:hover{
+	color:red;
+	text-decoration:none;
+	cursor: pointer;
+}
+
 .grid_3{
 	padding: 0;
 }
@@ -953,6 +1015,36 @@ p.movie__option a{
 	cursor: pointer;
 	positon: relative;
 }
+/****自定义****/
+.box_2 p{
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow: hidden;
+	padding: 0 20px;
+}
+.box_2 .col-md-3{
+	/*overflow: hidden;*/
+	height: 270px;
+	width: 21%;
+	margin: 2%;
+	position: relative;
+}
+.box_2 .col-md-3 img{
+	width: 188px;
+	height: 240px;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 20;
+    transform: translateY(-50%);
+}
+
+
+
+
+
 /*** Navigation ***/
 .nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
 	width: 45px;
@@ -1199,7 +1291,7 @@ background:#fff;
 float: left;
 outline: none;
 }
-.text input[type="text"], .text textarea {
+.text input[type="text"], .text textarea{
 width: 70%;
 font-size: 1.1em;
 margin: 10px 0;
@@ -1211,6 +1303,21 @@ height: 120px;
 padding: 10px;
 resize: none;
 }
+
+.text input[type="passwpr"], .text textarea{
+width: 70%;
+font-size: 1.1em;
+margin: 10px 0;
+border: none;
+color: #999;
+outline: none;
+background: #fff;
+height: 120px;
+padding: 10px;
+resize: none;
+}
+
+
 .form-submit1 input[type="submit"] {
 color: #FFF;
 font-size: 1.1em;
@@ -1276,7 +1383,7 @@ text-transform: uppercase;
 	display: block;
 	
 }
-.login-right input[type="text"] {
+.login-right input[type="text"] , .login-right input[type="password"]{
 	border: 1px solid #E4E4E4;
 	outline-color:#d8232a;
 	width: 96%;
@@ -1337,7 +1444,8 @@ p.cart {
 	
 	font-size:1em;
 }
-.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+.register-top-grid input[type="text"], .register-bottom-grid input[type="text"],
+#password, #confirmPassword{
 	border: 1px solid #EEE;
 	outline-color:#FF5B36;
 	width: 96%;
