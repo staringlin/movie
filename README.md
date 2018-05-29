@@ -6,8 +6,8 @@ hibernate.dialect=org.hibernate.dialect.MySQLDialect
 driverClassName=com.mysql.jdbc.Driver
 validationQuery=SELECT 1
 jdbc_url=jdbc:mysql://your_ip/movie?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-jdbc_username=test
-jdbc_password=test123456
+jdbc_username=username
+jdbc_password=password
 
 hibernate.hbm2ddl.auto=update
 hibernate.show_sql=true
